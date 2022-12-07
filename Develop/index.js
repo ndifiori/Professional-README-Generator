@@ -30,16 +30,16 @@ const questions = [
   }, {
     type: 'input',
     name: 'description',
-    message: 'Pleae write a short description of your project',
+    message: 'Pleae write a short description of your project?',
   }, {
-    type: 'input',
+    type: 'list',
     name: 'license',
-    message: 'What kind of license shoudl your project have?',
-    choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'NONE'],
+    message: 'What kind of license should your project have?',
+    choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
   }, {
     type: 'input',
     name: 'installation',
-    message: 'What command should be run to install dependencies',
+    message: 'What command should be run to install dependencies?',
     default: 'npm i',
   }, {
     type: 'input',
@@ -49,16 +49,21 @@ const questions = [
   }, {
     type: 'input',
     name: 'usage',
-    message: 'What does the user need to know about using the repo?',
+    message: 'What does the user need to know about using the repository?',
   }, {
     type: 'input',
     name: 'contributing',
-    message: 'What does the user need to know about contributing to the repo?',
+    message: 'What does the user need to know about contributing to the repository?',
   },
 ];
 
 
 // TODO: Create a function to write README file - DONE
+
+// we will use a function that returns the fs module that allows to write a file
+// we are using the path module to add our filename to our current working directory
+// process.cd will give us the working directory and then we have our file name
+// data is our parameter that will be written to the file
 
 function writeToFile(fileName, data) {
   return fs.writeFileSync(path.join(process.cwd(), fileName), data);
@@ -70,7 +75,7 @@ function writeToFile(fileName, data) {
 // use inquirer promise documentation to take in questions from the array and THEN lets use the users responses 
 // console log that we are generating user readme file
 // now we need to write the file (README.md) and then we need a data parameter
-  // in this case the data parameter is going to use our inquirerResponses as the data parameter to our linked generateMarkdown
+  // in this case the data parameter is going to use our inquirerResponses as the data parameter to our linked generateMarkdown 
 
 function init() {
   inquirer.prompt(questions).then((inquirerResponses) => {
